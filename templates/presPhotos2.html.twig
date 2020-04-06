@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    $(function (){ 
+      $('#carousel').carousel();
+    })
+</script> 
+
+<div class="container" >
+    <div class="row" >
+        <div class="col-md-12">
+            <div class="card mb-2">
+                 <h2 class="card-header bg-secondary text-white text-center font-weight-bold" >{{objet.nomObjets}}<br>
+                 <h6 class="card-header bg-secondary text-white text-center" >{{objet.textObjets}}</h6></h2>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" >
+    {# Carrousel de photos #}
+    <div id="carouselphoto" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            {% for photo in listePhotos %}
+            <li data-target="#carouselphoto" data-slide-to="{{ loop.index0 }}" {% if loop.index == 0 %} class="active" {% endif %}>{#<img class="d-block w-100" src={{"/images/photos/"~ photo.nomPhotos}}>#}</li>
+            {% endfor %}     
+        </ol>
+        <div class="carousel-inner">
+            {% for photo in listePhotos %}
+                    <div class="carousel-item {% if loop.index == 1 %}active{% endif %}" >
+                        <img src="{{"/Images/Photos/"~ photo.nomPhotos}}" class="d-block w-100"  >
+                        {#<div class="carousel-caption d-none d-md-block">
+                            <h6>{{photo.textPhotos}}</h6>
+                        </div>#}
+                    </div>
+            {% endfor %}
+            </div>
+        <a class="carousel-control-prev" href="#carouselphoto" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselphoto" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+{% endblock %}

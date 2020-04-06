@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{#{% block title %}TB-Moulage{% endblock %}#}
+
+{% block body %}
+<div align="center" style="background:black" class="jumbotron">
+  <font color="#ffffff">
+    <h2  class="display-3">{{type.nomTypes|capitalize}}</h2>
+    <p class="lead"> </p>
+    <img src="/images/EnConstruction.jpg" alt="En Construction">
+    <hr class="my-4">
+    <p></p>
+    <p class="lead">
+      <a class="btn-dark btn-lg" href="/types" role="button">Retour</a>
+    </p>
+  </font>
+</div>
+{% endblock %}

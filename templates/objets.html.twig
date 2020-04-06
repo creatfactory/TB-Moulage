@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{#{% block title %}TB-Moulage{% endblock %}#}
+{% block body %}
+<div class="container" >
+    <div class="row" ><p></p> </div>
+    <div class="row" >
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-2">
+                <h3 class="card-header bg-secondary text-white text-center" >{{type.nomTypes|capitalize}}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container" >
+    <div class="row" >
+        {% for objet in listeObjets %}
+        {{ dump(objet) }}
+        {% set afficherPhotosObjet = path('presPhotos',{'id':objet.id}) %}
+            <div class="col-md-2">
+                <div class="card mb-2">
+                    <h5 class="card-header bg-secondary text-white" >{{objet.nomObjets}}</h5>
+                    <a href={{afficherPhotosObjet}}> <img style="height: 100px; width: 100%; display: block;" src="#" ></a>
+                    <div class="card-footer bg-secondary text-black">{{ objet.footerObjets}}</div>
+                </div>
+                <br>
+            </div>
+        {% endfor %}
+    </div>
+</div>    
+{% endblock %}

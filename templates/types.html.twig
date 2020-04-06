@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{#{% block title %}TB-Moulage{% endblock %}#}
+{% block body %}
+<div class="container" >
+    <div class="row" ></div>
+    <div class="row" >
+        <div class="col-md-12">
+            <div><p></p></div>
+            <div class="card mb-2">
+                <h6 class="card-header bg-secondary text-white text-justify" >
+                    Depuis 1994, je participe, au sein des Muséums d'Histoire Naturelle, à la présentation des collections au grand public. 
+                    Mes connaissances en biologie et mes compétences techniques en arts plastiques me permettent de réaliser des maquettes, 
+                    des moulages et des restaurations de collections en respectant les exigences précises des muséums. A travers quelques 
+                    réalisations, ce site vous propose une application possible du moulage en sciences de la nature. De la minuscule grenouille 
+                    Amazonienne à l'esturgeon de 3m50 en passant par les serpents, les petits poissons polynésiens, ou la Rafflésia géante de Java 
+                    Gràce au moulage, je voyage... Sans jamais trop m'éloigner de mon atelier... </h6>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container-xl" >
+    <div class="row" >
+        {% for typeReal in typeRealisation %}
+        {% set afficherTypeObjets = path('afficherTypeObjets',{'id':typeReal.id}) %}
+            <div class="col-md-3">
+                <div class="card mb-2">
+                     <h5  class="card-header bg-secondary text-white" >{{typeReal.nomTypes|upper}}</h5>
+                     {{ dump(typeReal.photos) }}
+                     <div class="card-body bg-dark text-white">
+                        <h5 class="card-title">{{typeReal.titreTypes}}</h5>
+                        <h6 class="card-subtitle text-muted">{{typeReal.sousTitreTypes}}</h6>
+                    </div>
+                    <img style="height: 200px;  display: block; width: auto;" src="#" alt="Card image">
+                    <div class="card-body bg-dark text-white" >
+                        <h6><p class="card-text text-justify font-weight-lighter" style="min-height: 150px">{{typeReal.textTypes}}</p></h6>
+                         <a href= {{afficherTypeObjets}} class="card-link text-success">Aller aux {{typeReal.nomTypes}}</a>
+                    </div>
+                    <div class="card-footer bg-secondary text-black">
+                        {% if typeReal.Objets|length =='0' %}   
+                            Pas encore de réalisation
+                        {% else %}
+                            {{typeReal.Objets|length}} {{typeReal.nomTypes|lower}}
+                        {% endif %} 
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>    
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{#{% block title %}TB-Moulage{% endblock %}#}
+
+{% block body %}
+<script>
+    $(document).on('click', '.nav-link', function () {
+        $(".nav-item").find(".active").removeClass("active");
+    })
+    
+    
+</script>
+
+<div align="center"  style="background:black" class="jumbotron text-white">
+    <h1 class="display-3">THIERRY BOISGARD</h1>
+    <p></p>
+    <img src="/images/logoTB.jpg" alt="Logo TB" >
+    <hr class="my-3">
+    <h5 ><a title="mailto:t.boisgard@wanadoo.fr" href="mailto:t.boisgard@wanadoo.fr"><u>t.boisgard@wanadoo.fr</a></u></h5>
+    <hr class="my-3">
+    <a class="btn-dark btn-lg" href="/types" role="button">Accueil</a>
+</div>
+{% endblock %}
